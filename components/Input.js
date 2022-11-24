@@ -2,7 +2,7 @@ import styles from "../styles/Input.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTweet } from "../reducers/tweets";
-import { addHashtag } from "../reducers/hashtag";
+
 
 const Input = () => {
   const [message, setMessage] = useState("");
@@ -21,7 +21,7 @@ const Input = () => {
       .then((data) => {
         console.log(data);
         let hashtag = message.match(/#[a-z]+/gi);
-        hashtag && dispatch(addHashtag(hashtag));
+       
         setMessage("");
         dispatch(addTweet());
         console.log(added);

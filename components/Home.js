@@ -12,9 +12,7 @@ const Home = () => {
 
   const tweets = useSelector((state) => state.tweets.value);
 
-  const hashtag = useSelector((state) => state.hashtag.value);
-
-  console.log(hashtag)
+ 
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
