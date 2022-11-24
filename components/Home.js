@@ -3,9 +3,12 @@ import Image from "next/image";
 import Tweet from "./Tweet";
 
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [tweets, setTweets] = useState([]);
+
+  const users = useSelector((state) => state.users.value);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
@@ -38,5 +41,4 @@ const Home = () => {
   );
 };
 
-
-export default Home
+export default Home;
