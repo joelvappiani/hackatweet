@@ -7,3 +7,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.homeContainer {
+  background: #161d28;
+  display: flex;
+  height: 100vh;
+  color: white;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0px;
+  border-right: 1px solid gray;
+}
+
+.tweetContainer {
+  overflow: scroll;
+  width: 100%;
+}
