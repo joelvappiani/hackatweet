@@ -7,6 +7,8 @@ const tweetSchema = mongoose.Schema({
     date: Date
 })
 
-const Tweet = mongoose.model('tweets', tweetSchema);
+
+
+const Tweet = mongoose.models.tweets || mongoose.model('tweets', tweetSchema);
 
 module.exports = Tweet;

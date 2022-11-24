@@ -11,7 +11,9 @@ export default async (req, res) => {
       res.json({result: true})
     } 
     if (req.method === 'GET') {
-      const allTweets = await Tweet.find()
+      const allTweets = await Tweet.find().populate({ path: 'user', select: 'username' })
+      
+      
       res.json({
         result: true,
         tweets: allTweets
