@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    value: null
+    value: false
 }
 
 export const tweetsSlice = createSlice({
@@ -9,7 +9,7 @@ export const tweetsSlice = createSlice({
     initialState,
     reducers: {
         addTweet : (state) => {
-            state.value = 'tweet added'
+            state.value = !state.value
         }
     }
 })
