@@ -9,7 +9,7 @@
 }
 
 .homeContainer {
-  background: #161d28;
+  background: #161f2d;
   display: flex;
   height: 100vh;
   color: white;
@@ -23,9 +23,65 @@
   justify-content: space-between;
   padding: 30px 0px;
   border-right: 1px solid gray;
+  width: 25%;
+  padding: 1.5rem;
 }
 
+.logo {
+  rotate: 180deg;
+}
+
+.profile {
+  display: flex;
+}
+
+.profileIcon {
+  color: black;
+  font-size: 30px;
+}
+
+.profileImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 1rem;
+}
+
+.firstName {
+  margin-bottom: 0.2rem;
+  padding: 0;
+}
+
+.userName {
+  margin-top: 0;
+  color: gray;
+}
+
+.inputContainer {
+ width: 50vw;
+ border: 1px solid gray;
+ border-left: none;
+ border-top: none;
+}
+.trends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding-top: 0;
+  padding: 1.5rem;
+  width: 25%;
+}
+.trends h1 {
+  margin-top: 0;
+
+}
 .tweetContainer {
-  overflow: scroll;
+  height: calc(100vh - 15rem);
+  overflow-y: scroll;
   width: 100%;
 }

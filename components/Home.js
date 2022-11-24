@@ -1,8 +1,10 @@
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Tweet from "./Tweet";
-
+import Input from './Input'
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   const [tweets, setTweets] = useState([]);
@@ -22,15 +24,29 @@ const Home = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.leftMenu}>
-        <Image src="/images/logo-white.png" alt="logo" width={50} height={50} />
+        <Image className={styles.logo} src="/images/logo-white.png" alt="logo" width={50} height={50} />
         <div className={styles.profile}>
-          <p>FirstName</p>
-          <p>username</p>
+          <div className={styles.profileImage}>
+            <FontAwesomeIcon icon={faUser} className={styles.profileIcon}/> 
+          </div>
+
+          <div>
+            <p className={styles.firstName}>FirstName</p>
+            <p className={styles.userName}>@username</p>
+          </div>
         </div>
       </div>
-      <div className={styles.tweetContainer}>
+      <div>
+        <div className={styles.inputContainer}>
+          <Input />
+          <div className={styles.tweetContainer}>
         <div>{tweetList}</div>
       </div>
+        </div>
+
+      
+      </div>
+      
       <div className={styles.trends}>
         <h1>Trending posts</h1>
       </div>
