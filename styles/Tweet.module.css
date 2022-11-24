@@ -19,3 +19,19 @@
 .userName,.date{
     opacity: 50%;
 }
+
+.profileImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4787CC;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
+
+.profileIcon {
+  color: white;
+  font-size: 15px;
+}

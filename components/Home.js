@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Tweet from "./Tweet";
-import Input from './Input'
+import Input from "./Input";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +12,10 @@ const Home = () => {
 
   const tweets = useSelector((state) => state.tweets.value);
 
+  const hashtag = useSelector((state) => state.hashtag.value);
+
+  console.log(hashtag)
+
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
@@ -21,19 +25,23 @@ const Home = () => {
   }, [tweets]);
 
   const tweetLists = tweetsList.map((data, i) => {
-    console.log(data.user)
-    const user=data.user
+    const user = data.user;
     return <Tweet key={i} {...data} {...user} />;
-    
   });
 
   return (
     <div className={styles.homeContainer}>
       <div className={styles.leftMenu}>
-        <Image className={styles.logo} src="/images/logo-white.png" alt="logo" width={50} height={50} />
+        <Image
+          className={styles.logo}
+          src="/images/logo-white.png"
+          alt="logo"
+          width={50}
+          height={50}
+        />
         <div className={styles.profile}>
           <div className={styles.profileImage}>
-            <FontAwesomeIcon icon={faUser} className={styles.profileIcon}/> 
+            <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
           </div>
 
           <div>
@@ -46,13 +54,11 @@ const Home = () => {
         <div className={styles.inputContainer}>
           <Input />
           <div className={styles.tweetContainer}>
-        <div>{tweetLists}</div>
-      </div>
+            <div>{tweetLists}</div>
+          </div>
         </div>
-
-      
       </div>
-      
+
       <div className={styles.trends}>
         <h1>Trending posts</h1>
       </div>

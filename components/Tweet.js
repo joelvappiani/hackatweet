@@ -1,8 +1,13 @@
 import styles from "../styles/Tweet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart,faTrash,faUser } from "@fortawesome/free-solid-svg-icons";
+import {useState} from "react"
 
 const Tweet = (props) => {
+
+
+
+
   let tweetDate = new Date(props.date);
   let hour = tweetDate.getHours();
   hour < 10 ? (hour = `0${hour}`) : hour;
