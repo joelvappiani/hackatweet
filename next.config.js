@@ -7,13 +7,9 @@ const nextConfig = {
   },
 };
 
-<<<<<<< HEAD
 module.exports = {
   env: {
     MONGO_CONNECTION_STRING : process.env.MONGO_CONNECTION_STRING
   }
 }
 module.exports = nextConfig
-=======
-module.exports = nextConfig;
->>>>>>> ange
