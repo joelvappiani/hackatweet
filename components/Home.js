@@ -6,20 +6,23 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [tweets, setTweets] = useState([]);
+  const [tweetsList, setTweetsList] = useState([]);
 
-  const users = useSelector((state) => state.users.value);
+  const tweets = useSelector((state) => state.tweets.value);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
       .then((data) => {
-        setTweets(data.tweets);
+        setTweetsList(data.tweets);
       });
-  }, []);
+  }, [tweets]);
 
-  const tweetList = tweets.map((data, i) => {
-    return <Tweet key={i} {...data} />;
+  const tweetLists = tweetsList.map((data, i) => {
+    console.log(data.user)
+    const user=data.user
+    return <Tweet key={i} {...data} {...user} />;
+    
   });
 
   return (
@@ -32,7 +35,7 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.tweetContainer}>
-        <div>{tweetList}</div>
+        <div>{tweetLists}</div>
       </div>
       <div className={styles.trends}>
         <h1>Trending posts</h1>
