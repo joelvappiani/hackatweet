@@ -46,7 +46,7 @@ const Home = () => {
         <div className={styles.inputContainer}>
           <Input />
           <div className={styles.tweetContainer}>
-        <div>{tweetList}</div>
+        <div>{tweetLists}</div>
       </div>
         </div>
 
