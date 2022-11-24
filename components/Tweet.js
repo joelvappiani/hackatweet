@@ -1,6 +1,7 @@
 import styles from "../styles/Tweet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart,faTrash,faUser } from "@fortawesome/free-solid-svg-icons";
+import {useState} from "react"
 
 import { useDispatch } from 'react-redux';
 import { deleteTweet } from '../reducers/tweets'
