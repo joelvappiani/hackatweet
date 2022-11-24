@@ -10,9 +10,12 @@ export const tweetsSlice = createSlice({
     reducers: {
         addTweet : (state) => {
             state.value = !state.value
+        },
+        deleteTweet : (state) => {
+            state.value = !state.value
         }
     }
 })
 
-export const { addTweet } = tweetsSlice.actions
+export const { addTweet, deleteTweet } = tweetsSlice.actions
 export default tweetsSlice.reducer

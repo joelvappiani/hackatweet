@@ -23,7 +23,8 @@ const Home = () => {
   const tweetLists = tweetsList.map((data, i) => {
     console.log(data.user)
     const user=data.user
-    return <Tweet key={i} {...data} {...user} />;
+    const tweetId = data._id
+    return <Tweet key={i} {...data} {...user} tweetId={tweetId}/>;
     
   });
 
