@@ -1,10 +1,12 @@
 import styles from '../styles/Input.module.css'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addTweet } from '../reducers/tweets'
 const Input = () => {
     const [message, setMessage] = useState("")
     
-
+    const dispatch = useDispatch()
+    const added = useSelector((state)=> state.tweets.value)
     const token = useSelector((state)=> state.users.value)
 
     const handleAdd = () => {
@@ -16,6 +18,8 @@ const Input = () => {
         .then(data => {
             console.log(data)
             setMessage("")
+            dispatch(addTweet())
+            console.log(added)
         })
     }
     return (
