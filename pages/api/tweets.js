@@ -23,11 +23,15 @@ export default async (req, res) => {
     });
   }
   if (req.method === "DELETE") {
-    res.json({ method: "delete" });
+    const {id} = req.body
+    await Tweet.findByIdAndDelete(id)
+    const found = await Tweet.findById(id)
+    if(found) {
+      res.json({ result: false})
+    }
+    if(!found) {
+      res.json({ result: true})
+    }
   }
 };
-// .populate({
-//   path: 'copies.loaned_to',
-//   select:
-//     'username',
-// })
+
