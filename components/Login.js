@@ -30,18 +30,9 @@ const Login = () => {
             Link to Home page
           </Link>
         </div>
-<<<<<<< HEAD
-        </>
-    )
-}
-{/* <Link href="/test" className={styles.link}>Link to Test page</Link> */}
-
-export default Login
-=======
       </div>
     </>
   );
 };
 
 export default Login;
->>>>>>> ange

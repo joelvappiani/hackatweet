@@ -3,11 +3,12 @@ const Tweet = require("../../models/Tweet");
 const User = require("../../models/User");
 export default async (req, res) => {
   if (req.method === "POST") {
-    const { user, message, nbLikes } = req.body;
+    const { token, message, nbLikes } = req.body;
     const date = new Date();
+    const findUser = await User.findOne({token})
+    const user = findUser._id
     const newTweet = await new Tweet({ user, message, nbLikes, date });
     newTweet.save();
-    console.log(newTweet);
     res.json({ result: true });
   }
   if (req.method === "GET") {

@@ -11,7 +11,7 @@ const Test = () => {
     
 
     const loginFunction = () => {
-        dispatch(login('test-token-2'))
+        dispatch(login('oWSFmTSuH708HZvLJqOFfKSu-Sohjr-z'))
     }
 
     const logoutFunction = () => {
