@@ -1,6 +1,6 @@
 import styles from "../styles/Tweet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart,faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faHeart,faTrash,faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Tweet = (props) => {
   let tweetDate = new Date(props.date);
@@ -23,13 +23,16 @@ const Tweet = (props) => {
   return (
     <div className={styles.tweetContainer}>
       <div className={styles.user}>
+        <div className={styles.profileImage}>
+          <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
+        </div>
         <p>{props.username}</p>
         <p className={styles.userName}>userName</p>
         <p className={styles.date}>{delay}</p>
       </div>
       <p className={styles.content}>{props.message}</p>
       <div>
-        <FontAwesomeIcon icon={faHeart} style={{marginRight:"10px"}}/>
+        <FontAwesomeIcon icon={faHeart} style={{ marginRight: "10px" }} />
         <FontAwesomeIcon icon={faTrash} />
       </div>
     </div>
