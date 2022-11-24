@@ -9,10 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "cors": "^2.8.5",
-=======
->>>>>>> ange
     "dotenv": "^16.0.3",
     "mongoose": "^6.7.3",
     "next": "13.0.5",
