@@ -77,7 +77,7 @@ const Tweet = (props) => {
         <div className={styles.profileImage}>
           <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
         </div>
-        <p >{props.firstName}</p>
+        <p>{props.firstName}</p>
         <p className={styles.userName}>@{props.username}</p>
         <p className={styles.date}>{delay}</p>
       </div>

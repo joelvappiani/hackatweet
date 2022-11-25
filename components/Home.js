@@ -20,11 +20,11 @@ const Home = () => {
   const tweets = useSelector((state) => state.tweets.value);
 
   const users = useSelector((state) => state.users.value);
-  
-  let username = useSelector((state)=> state.users.value.username)
-  
-  let firstName = useSelector((state)=> state.users.value.firstName)
-  
+
+  let username = useSelector((state) => state.users.value.username);
+
+  let firstName = useSelector((state) => state.users.value.firstName);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
@@ -39,6 +39,7 @@ const Home = () => {
 
   const tweetLists = tweetsList.map((data, i) => {
     const userId = data.user._id;
+
     const user = data.user;
     const tweetId = data._id;
     const myId = users._id
@@ -60,9 +61,9 @@ const Home = () => {
 
   const handleLogout = () => {
     router.push("/");
-    setTimeout(()=> {
+    setTimeout(() => {
       dispatch(logout());
-    }, 500)
+    }, 500);
   };
 
   if (users) {
@@ -110,9 +111,7 @@ const Home = () => {
       </div>
     );
   } else {
-    return (
-      <Unauthorized/>
-    )
+    return <Unauthorized />;
   }
 };
 
