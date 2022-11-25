@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { logout } from "../reducers/users";
 
 const Home = () => {
@@ -42,6 +42,7 @@ const Home = () => {
 
     const user = data.user;
     const tweetId = data._id;
+    const myId = users._id
 
     console.log(data);
 
