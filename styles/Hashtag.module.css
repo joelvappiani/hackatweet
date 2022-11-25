@@ -1,0 +1,128 @@
+
+  .homeContainer {
+    background: #161f2d;
+    display: flex;
+    height: 100vh;
+    color: white;
+    width: 100vw;
+    justify-content: space-between;
+  }
+  
+  .leftMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 0px;
+    border-right: 1px solid gray;
+    width: 25%;
+    padding: 1.5rem;
+  }
+  
+  .logo {
+    rotate: 180deg;
+  }
+  
+  .profile {
+    display: flex;
+  }
+  
+  .profileIcon {
+    color: black;
+    font-size: 30px;
+  }
+  
+  .profileImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 1rem;
+  }
+  
+  .leftMenuFooter {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .firstName {
+    margin-bottom: 0.2rem;
+    padding: 0;
+  }
+  
+  .userName {
+    margin-top: 0;
+    color: gray;
+  }
+  
+  .logoutBtn {
+    padding: 0.5rem;
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: #161f2d;
+    font-size: 14px;
+    width: 10rem;
+  }
+  .logoutBtn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #161f2d;
+  }
+  .middleSection{
+    width: 50%;
+  }
+  .middleSection h1 {
+    margin-left: 1rem;
+  }
+ 
+  .search {
+    display: flex;
+    justify-content: space-around;
+  } 
+  .inputField {
+    padding-left: 1rem;
+    width: 70%;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(50, 50, 50);
+  }
+
+  .inputField::placeholder{
+    color: white;
+  }
+  .searchBtn {
+    background-color: #409af0;
+    border-radius: 20px;
+    border: none;
+    padding: 0.7rem;
+  }
+  .searchBtn:hover {
+    cursor: pointer;
+    background-color: #1b222d;
+    color: white;
+    border: 1px solid white;
+  }
+  .tweetsContainer {
+    margin-top: 2rem;
+  }
+  .trends {
+    border-left : 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+    padding: 1.5rem;
+    width: 25%;
+  }
+  .trends h1 {
+    margin-top: 0;
+  }
+
+  .trendsList {
+    background: #1b222d;
+    width: 60%;
+    border-radius: 15px;
+  }
+  
