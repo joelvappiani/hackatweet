@@ -4,13 +4,14 @@ import { faHeart, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { Cursor } from "mongoose";
 
-import { useDispatch } from 'react-redux';
-import { deleteTweet } from '../reducers/tweets'
+import { useDispatch } from "react-redux";
+import { deleteTweet } from "../reducers/tweets";
 
 const Tweet = (props) => {
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-  
+  const [like, setLike] = useState(props.isLiked);
+
   let tweetDate = new Date(props.date);
   let hour = tweetDate.getHours();
   hour < 10 ? (hour = `0${hour}`) : hour;
@@ -28,22 +29,47 @@ const Tweet = (props) => {
   } else {
     delay = `${Math.floor(Math.abs(tweetDate - curDate) / msInHour)} hours`;
   }
-  
+
   const handleDelete = () => {
-    const id = props.tweetId
-    fetch('http://localhost:3000/api/tweets', {
-      method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id }),
-    }).then(response => response.json())
-    .then(data => {
-      dispatch(deleteTweet())
-    })}
+    const id = props.tweetId;
+    fetch("http://localhost:3000/api/tweets", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(deleteTweet());
+      });
+  };
+
+  const handleLike = () => {
+    setLike(!like);
+    const id = props.tweetId;
+    const counter = like ? "decrement" : "increment";
+    const userId = props.userId;
+
+    fetch("http://localhost:3000/api/tweets", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, counter, userId }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(deleteTweet());
+      });
+  };
 
   let displayStyle;
 
   if (!props.isUserTweet) {
     displayStyle = { display: "none" };
+  }
+
+  let likeStyle;
+
+  if (like) {
+    likeStyle = { color: "red" };
   }
 
   return (
@@ -58,7 +84,13 @@ const Tweet = (props) => {
       </div>
       <p className={styles.content}>{props.message}</p>
       <div>
-        <FontAwesomeIcon icon={faHeart} style={{ cursor: "pointer" }} />{" "}
+        <FontAwesomeIcon
+          icon={faHeart}
+          style={{ ...likeStyle, marginRight: "5px", cursor: "pointer" }}
+          onClick={() => {
+            handleLike();
+          }}
+        />
         <span style={{ marginRight: "10px" }}>({props.nbLikes})</span>
         <FontAwesomeIcon icon={faTrash} style={displayStyle} />
       </div>
