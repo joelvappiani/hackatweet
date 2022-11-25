@@ -13,7 +13,7 @@ export default function signup(req, res) {
 
     User.findOne({ username: req.body.username }).then((data) => {
       if (data && bcrypt.compareSync(req.body.password, data.password)) {
-        res.json({ result: true, token: data.token });
+        res.json({ result: true, data });
       } else {
         res.json({ result: false, error: "User not found or wrong password" });
       }

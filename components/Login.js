@@ -61,7 +61,7 @@ const Login = () => {
       .then(data => {
         console.log(data)
         if(data.result) {
-          dispatch(login(data.token))
+          dispatch(login(data))
           setWrong("")
           router.push('/home')
         } else 
@@ -78,7 +78,7 @@ const Login = () => {
       .then(data => {
         console.log(data)
         if(data.result) {
-          dispatch(login(data.token))
+          dispatch(login(data))
           setWrong("")
           router.push('/home')
         } else 

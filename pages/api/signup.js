@@ -25,8 +25,8 @@ export default function signup(req, res) {
           password: hash,
         });
 
-        newUser.save().then((newDoc) => {
-          res.json({ result: true, token: newDoc.token });
+        newUser.save().then((data) => {
+          res.json({ result: true, data });
         });
       } else {
         // User already exists in database
