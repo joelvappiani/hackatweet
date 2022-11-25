@@ -18,15 +18,10 @@ const Home = () => {
   const [tweetsList, setTweetsList] = useState([]);
 
   const tweets = useSelector((state) => state.tweets.value);
-<<<<<<< HEAD
 
   const users = useSelector((state) => state.users.value);
 
   console.log(users);
-=======
-  const isConnected = useSelector((state)=> state.users.value)
- 
->>>>>>> jojo
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
@@ -60,7 +55,7 @@ const Home = () => {
     router.push('/')
   }
 
-  if (isConnected){
+  if (users){
 
     return (
       <div className={styles.homeContainer}>
