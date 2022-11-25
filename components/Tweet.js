@@ -1,7 +1,8 @@
 import styles from "../styles/Tweet.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart,faTrash,faUser } from "@fortawesome/free-solid-svg-icons";
-import {useState} from "react"
+import { faHeart, faTrash, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import { Cursor } from "mongoose";
 
 import { useDispatch } from 'react-redux';
 import { deleteTweet } from '../reducers/tweets'
@@ -21,7 +22,9 @@ const Tweet = (props) => {
   let delay;
 
   if (Math.floor(Math.abs(tweetDate - curDate) / msInHour) === 0) {
-    delay = `${Math.floor((Math.abs(tweetDate - curDate) / msInHour) * 60)} min`;
+    delay = `${Math.floor(
+      (Math.abs(tweetDate - curDate) / msInHour) * 60
+    )} min`;
   } else {
     delay = `${Math.floor(Math.abs(tweetDate - curDate) / msInHour)} hours`;
   }
@@ -35,7 +38,12 @@ const Tweet = (props) => {
     }).then(response => response.json())
     .then(data => {
       dispatch(deleteTweet())
-    })
+    })}
+
+  let displayStyle;
+
+  if (!props.isUserTweet) {
+    displayStyle = { display: "none" };
   }
 
   return (
@@ -45,13 +53,14 @@ const Tweet = (props) => {
           <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
         </div>
         <p>{props.username}</p>
-        <p className={styles.userName}>userName</p>
+        <p className={styles.userName}>{props.firstName}</p>
         <p className={styles.date}>{delay}</p>
       </div>
       <p className={styles.content}>{props.message}</p>
       <div>
-        <FontAwesomeIcon icon={faHeart} style={{marginRight:"10px"}}/>
-        <FontAwesomeIcon icon={faTrash} onClick={handleDelete}/>
+        <FontAwesomeIcon icon={faHeart} style={{ cursor: "pointer" }} />{" "}
+        <span style={{ marginRight: "10px" }}>({props.nbLikes})</span>
+        <FontAwesomeIcon icon={faTrash} style={displayStyle} />
       </div>
     </div>
   );

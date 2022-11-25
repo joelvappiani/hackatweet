@@ -12,22 +12,35 @@ const Home = () => {
 
   const tweets = useSelector((state) => state.tweets.value);
 
- 
+  const users = useSelector((state) => state.users.value);
+
+  console.log(users);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
       .then((data) => {
-        setTweetsList(data.tweets);
+        setTweetsList(
+          data.tweets.sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date);
+          })
+        );
       });
   }, [tweets]);
 
   const tweetLists = tweetsList.map((data, i) => {
-    console.log(data.user)
-    const user=data.user
-    const tweetId = data._id
-    return <Tweet key={i} {...data} {...user} tweetId={tweetId}/>;
-    
+    console.log(data.user);
+    const user = data.user;
+    const tweetId = data._id;
+    return (
+      <Tweet
+        key={i}
+        {...data}
+        {...user}
+        tweetId={tweetId}
+        isUserTweet={user.token === users}
+      />
+    );
   });
 
   return (
