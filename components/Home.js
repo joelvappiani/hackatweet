@@ -31,9 +31,10 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         const hashtag = [];
+        console.log(data.tweets)
         data.tweets.forEach(
           (element) =>
-            element.hashtag.length > 0 &&
+            !!element.hashtag  &&
             element.hashtag.map((e) => hashtag.push(e))
         );
 
