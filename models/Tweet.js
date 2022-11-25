@@ -5,7 +5,7 @@ const tweetSchema = mongoose.Schema({
   message: String,
   nbLikes: Number,
   date: Date,
-  userLikes: String,
+  userLikes: Array,
 });
 
 const Tweet = mongoose.models.tweets || mongoose.model("tweets", tweetSchema);
