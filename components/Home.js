@@ -16,6 +16,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const [tweetsList, setTweetsList] = useState([]);
+  const [hashtagList, setHashtagList] = useState([]);
 
   const tweets = useSelector((state) => state.tweets.value);
 
@@ -29,6 +30,22 @@ const Home = () => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
       .then((data) => {
+        const hashtag = [];
+        data.tweets.forEach(
+          (element) =>
+            element.hashtag.length > 0 &&
+            element.hashtag.map((e) => hashtag.push(e))
+        );
+
+        setHashtagList(
+          hashtag.sort(function (a, b) {
+            return (
+              hashtag.filter((e) => e === b).length -
+              hashtag.filter((e) => e === a).length
+            );
+          })
+        );
+
         setTweetsList(
           data.tweets.sort(function (a, b) {
             return new Date(b.date) - new Date(a.date);
@@ -42,9 +59,8 @@ const Home = () => {
 
     const user = data.user;
     const tweetId = data._id;
-    const myId = users._id
+    const myId = users._id;
 
-   console.log(data.userLikes.some((e) => e === users._id))
     return (
       <Tweet
         key={i}
@@ -54,9 +70,13 @@ const Home = () => {
         isUserTweet={user.token === users.token}
         userId={userId}
         isLiked={data.userLikes.some((e) => e === userId)}
-        
       />
     );
+  });
+
+  const trendsList = [...new Set(hashtagList)].map((data, i) => {
+    const hashtagCount = hashtagList.filter((e) => e === data).length;
+    return <Trends hashtagName={data} key={i} count={hashtagCount} />;
   });
 
   const handleLogout = () => {
@@ -104,9 +124,7 @@ const Home = () => {
 
         <div className={styles.trends}>
           <h1>Trending posts</h1>
-          <div className={styles.trendsList}>
-            <Trends />
-          </div>
+          <div className={styles.trendsList}>{trendsList}</div>
         </div>
       </div>
     );

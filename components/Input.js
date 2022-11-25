@@ -11,13 +11,12 @@ const Input = () => {
   const token = useSelector((state) => state.users.value.token);
 
   const handleAdd = () => {
-    
     let hashtag = message.match(/#[a-z]+/gi);
 
     fetch("http://localhost:3000/api/tweets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, message, nbLikes: 0 }),
+      body: JSON.stringify({ token, message, nbLikes: 0, hashtag }),
     })
       .then((response) => response.json())
       .then((data) => {

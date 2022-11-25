@@ -1,12 +1,17 @@
 import styles from "../styles/Trends.module.css";
-import { useState } from "react";
+import Link from "next/link";
 
 const Trends = (props) => {
-    return (
-  <div className={styles.hashtag}>
-    <div className={styles.trendTitle}>#salut</div>
-    <div className={styles.trendCount}>0 tweets</div>
-  </div>)
+  return (
+    <Link href={`/post/${props.hashtagName.slice(1)}`}>
+      <div className={styles.hashtag}>
+        <div className={styles.trendTitle}>{props.hashtagName}</div>
+        <div className={styles.trendCount}>
+          {props.count} {props.count <= 1 ? "tweet" : "tweets"}
+        </div>
+      </div>
+    </Link>
+  );
 };
 
 export default Trends;
