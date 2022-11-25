@@ -21,6 +21,11 @@ const Home = () => {
 
   const users = useSelector((state) => state.users.value);
 
+<<<<<<< HEAD
+=======
+  console.log(users);
+
+>>>>>>> jojo
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
@@ -55,7 +60,7 @@ const Home = () => {
     router.push('/')
   }
 
-  if (isConnected){
+  if (users){
 
     return (
       <div className={styles.homeContainer}>
