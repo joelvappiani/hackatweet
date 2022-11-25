@@ -13,9 +13,13 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { logout } from "../../reducers/users";
 const Post = () => {
+  const [hashtagList, setHashtagList] = useState([]);
+
   const router = useRouter()
   const { hashtag } = router.query
   const [tweetsList, setTweetsList] = useState([])
+
+
   const tweets = useSelector((state) => state.tweets.value);
 
   const users = useSelector((state) => state.users.value);
@@ -38,11 +42,26 @@ const Post = () => {
         const dataArr = data.tweets.filter((e)=> {
            return e.hashtag.find(f => f === `#${hashtag}`)
         })
-        console.log(dataArr)
+        const hashtagHome = [];
+        data.tweets.forEach(
+          (element) =>
+            element.hashtag.length > 0 &&
+            element.hashtag.map((e) => hashtagHome.push(e))
+        );
+
+        setHashtagList(
+          hashtagHome.sort(function (a, b) {
+            return (
+              hashtagHome.filter((e) => e === b).length -
+              hashtagHome.filter((e) => e === a).length
+            );
+          })
+        );
+
         setTweetsList(dataArr)
       })
      
-  }, []);
+  }, [hashtagList,]);
   const tweetLists = tweetsList.map((data, i) => {
     const userId = data.user._id;
     const user = data.user;
@@ -62,6 +81,10 @@ const Post = () => {
         
       />
     );
+  });
+  const trendsList = [...new Set(hashtagList)].map((data, i) => {
+    const hashtagCount = hashtagList.filter((e) => e === data).length;
+    return <Trends hashtagName={data.slice(1)} key={i} count={hashtagCount} />;
   });
   return (
 
@@ -105,9 +128,7 @@ const Post = () => {
 
         <div className={styles.trends}>
           <h1>Trending posts</h1>
-          <div className={styles.trendsList}>
-            <Trends />
-          </div>
+          <div className={styles.trendsList}>{trendsList}</div>
         </div>
       </div>
   )
