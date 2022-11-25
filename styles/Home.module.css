@@ -73,6 +73,7 @@
   border: 1px solid white;
   background-color: #161f2d;
   font-size: 14px;
+  width: 10rem;
 }
 .logoutBtn:hover {
   cursor: pointer;

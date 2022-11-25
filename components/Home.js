@@ -19,8 +19,10 @@ const Home = () => {
   const tweets = useSelector((state) => state.tweets.value);
 
   const users = useSelector((state) => state.users.value);
-
-  console.log(users);
+  
+  let username = useSelector((state)=> state.users.value.data.username)
+  
+  let firstName = useSelector((state)=> state.users.value.data.firstName)
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
@@ -40,8 +42,7 @@ const Home = () => {
     const user = data.user;
     const tweetId = data._id;
 
-    console.log(data);
-
+   
     return (
       <Tweet
         key={i}
@@ -78,8 +79,8 @@ const Home = () => {
               </div>
 
               <div>
-                <p className={styles.firstName}>FirstName</p>
-                <p className={styles.userName}>@username</p>
+                <p className={styles.firstName}>{firstName}</p>
+                <p className={styles.userName}>@{username}</p>
               </div>
             </div>
             <button className={styles.logoutBtn} onClick={handleLogout}>
@@ -102,7 +103,9 @@ const Home = () => {
       </div>
     );
   } else {
-    return <Unauthorized />;
+    return (
+      <Unauthorized/>
+    )
   }
 };
 
