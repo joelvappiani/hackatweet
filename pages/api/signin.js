@@ -3,6 +3,7 @@ require("../../models/connection");
 const { checkBody } = require("../../modules/checkbody");
 const bcrypt = require("bcrypt");
 
+
 export default function signup(req, res) {
   if (req.method === "POST") {
     if (!checkBody(req.body, ["username", "password"])) {

@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #161d28;
+    width: 100vw;
+    height: 100vh;
+}
+
+.link {
+    color: #1099fc;
+}
+
+.link:hover {
+    cursor: pointer;
+}

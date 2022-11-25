@@ -51,6 +51,12 @@
   margin: 1rem;
 }
 
+.leftMenuFooter {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .firstName {
   margin-bottom: 0.2rem;
   padding: 0;
@@ -59,6 +65,19 @@
 .userName {
   margin-top: 0;
   color: gray;
+}
+
+.logoutBtn {
+  padding: 0.5rem;
+  border-radius: 20px;
+  border: 1px solid white;
+  background-color: #161f2d;
+  font-size: 14px;
+}
+.logoutBtn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #161f2d;
 }
 
 .inputContainer {

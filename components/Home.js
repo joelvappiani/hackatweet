@@ -2,19 +2,31 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Tweet from "./Tweet";
 import Input from "./Input";
+import Unauthorized from './Unauthorized'
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import Router, { useRouter } from 'next/router'
+import { logout } from '../reducers/users'
 
 const Home = () => {
+
+  const router = useRouter()
+
+  const dispatch = useDispatch()
   const [tweetsList, setTweetsList] = useState([]);
 
   const tweets = useSelector((state) => state.tweets.value);
+<<<<<<< HEAD
 
   const users = useSelector((state) => state.users.value);
 
   console.log(users);
+=======
+  const isConnected = useSelector((state)=> state.users.value)
+ 
+>>>>>>> jojo
 
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
@@ -43,8 +55,15 @@ const Home = () => {
     );
   });
 
-  return (
-    <div className={styles.homeContainer}>
+  const handleLogout = () => {
+    dispatch(logout())
+    router.push('/')
+  }
+
+  if (isConnected){
+
+    return (
+      <div className={styles.homeContainer}>
       <div className={styles.leftMenu}>
         <Image
           className={styles.logo}
@@ -52,16 +71,22 @@ const Home = () => {
           alt="logo"
           width={50}
           height={50}
-        />
-        <div className={styles.profile}>
-          <div className={styles.profileImage}>
-            <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
-          </div>
+          />
+        <div className={styles.leftMenuFooter}>
+          <div className={styles.profile}>
+            <div className={styles.profileImage}>
+              <FontAwesomeIcon icon={faUser} className={styles.profileIcon} />
+            </div>
 
-          <div>
-            <p className={styles.firstName}>FirstName</p>
-            <p className={styles.userName}>@username</p>
+            <div>
+              <p className={styles.firstName}>FirstName</p>
+              <p className={styles.userName}>@username</p>
+            </div>
           </div>
+          <button 
+          className={styles.logoutBtn}
+          onClick={handleLogout}
+          >Logout</button>
         </div>
       </div>
       <div>
@@ -78,6 +103,9 @@ const Home = () => {
       </div>
     </div>
   );
+} else {
+  return <Unauthorized />
+}
 };
 
 export default Home;
