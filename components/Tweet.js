@@ -10,8 +10,6 @@ import { deleteTweet } from "../reducers/tweets";
 const Tweet = (props) => {
   const dispatch = useDispatch();
 
-  // const [like, setLike] = useState(props.isLiked);
-
   let tweetDate = new Date(props.date);
   let hour = tweetDate.getHours();
   hour < 10 ? (hour = `0${hour}`) : hour;
@@ -26,6 +24,8 @@ const Tweet = (props) => {
     delay = `${Math.floor(
       (Math.abs(tweetDate - curDate) / msInHour) * 60
     )} min`;
+  } else if (Math.floor(Math.abs(tweetDate - curDate) / msInHour) === 1) {
+    delay = `${Math.floor(Math.abs(tweetDate - curDate) / msInHour)} hour`;
   } else {
     delay = `${Math.floor(Math.abs(tweetDate - curDate) / msInHour)} hours`;
   }

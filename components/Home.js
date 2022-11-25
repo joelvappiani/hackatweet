@@ -2,6 +2,7 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Tweet from "./Tweet";
 import Input from "./Input";
+import Trends from "./Trends";
 import Unauthorized from "./Unauthorized";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -100,6 +101,9 @@ const Home = () => {
 
         <div className={styles.trends}>
           <h1>Trending posts</h1>
+          <div className={styles.trendsList}>
+            <Trends />
+          </div>
         </div>
       </div>
     );

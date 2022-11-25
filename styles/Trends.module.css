@@ -1,0 +1,17 @@
+.hashtag{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trendTitle{
+    color: white;
+    font-weight: bold;
+}
+
+.trendCount{
+    font-size: 12px;
+    opacity: 50%;
+    margin: 5px 0px;
+}
