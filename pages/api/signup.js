@@ -21,7 +21,7 @@ export default function signup(req, res) {
         const newUser = new User({
           token: uid2(32),
           username: req.body.username,
-          firsName: req.body.firstName,
+          firstName: req.body.firstName,
           password: hash,
         });
 

@@ -40,8 +40,6 @@ const Home = () => {
     const user = data.user;
     const tweetId = data._id;
 
-    console.log(data);
-
     return (
       <Tweet
         key={i}
