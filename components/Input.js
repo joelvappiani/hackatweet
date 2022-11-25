@@ -9,7 +9,7 @@ const Input = () => {
 
   const dispatch = useDispatch();
   const added = useSelector((state) => state.tweets.value);
-  const token = useSelector((state) => state.users.value);
+  const token = useSelector((state) => state.users.value.token);
 
   const handleAdd = () => {
     fetch("http://localhost:3000/api/tweets", {
