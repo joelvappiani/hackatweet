@@ -16,8 +16,8 @@ const Input = () => {
 
     fetch("http://localhost:3000/api/tweets", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token, message, nbLikes: 0 }),
+      headers: { "Content-Type": "application/json" },    
+      body: JSON.stringify({ token, message, nbLikes: 0, hashtag }),
     })
       .then((response) => response.json())
       .then((data) => {

@@ -3,7 +3,7 @@ const Tweet = require("../../models/Tweet");
 const User = require("../../models/User");
 export default async (req, res) => {
   if (req.method === "POST") {
-    const { token, message, nbLikes } = req.body;
+    const { token, message, nbLikes, hashtag } = req.body;
     const date = new Date();
     const findUser = await User.findOne({ token });
     const user = findUser._id;
@@ -13,6 +13,7 @@ export default async (req, res) => {
       nbLikes,
       date,
       userLikes: "",
+      hashtag
     });
     newTweet.save();
     res.json({ result: true });
