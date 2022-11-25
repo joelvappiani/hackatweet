@@ -52,8 +52,8 @@ const Home = () => {
   });
 
   const handleLogout = () => {
-    dispatch(logout())
     router.push('/')
+    dispatch(logout())
   }
 
   if (users){

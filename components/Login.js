@@ -5,6 +5,8 @@ import { Modal } from 'antd';
 import { useDispatch } from 'react-redux';
 import { login } from '../reducers/users';
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+
 
 const Login = () => {
 
@@ -68,8 +70,6 @@ const Login = () => {
     }
 
     const handleSignIn = () => {
-      // console.log(signInUserName)
-      // console.log(signInPassword)
       fetch('http://localhost:3000/api/signin', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -114,40 +114,52 @@ const Login = () => {
   return (
     <>
       <div className={styles.main}>
-        <div className={styles.img}></div>
-        <div className={styles.login}>
-          <h1>See What's Happening</h1>
-          <h3>Join Hackatweet today.</h3>
-          <button
-            className={styles.signupBtn}
-            onClick={showSignUpModal}
-          >
-            Sign up
-          </button>
-          {isSignUpModalOpen &&  <Modal  
-            className={styles.modal}
-            open={isSignUpModalOpen} 
-            onCancel={handleSignUpCancel}
-            footer={null}
-            >
-          {signUpForm}
-        </Modal>}
-          <h4>Already have an account ?</h4>
-          <button
-            className={styles.signInBtn}
-            onClick={showSignInModal}
-          >
-            Sign In
-          </button>
-          {isSignInModalOpen &&  <Modal  
-            className={styles.modal}
-            open={isSignInModalOpen} 
-            onCancel={handleSignInCancel}
-            footer={null}
-            >
-          {signInForm}
-        </Modal>}
-          
+        <div className={styles.leftBanner}>
+        <Image
+          className={styles.bannerImg}
+          src="/images/logo-white.png"
+          alt="logo"
+          width={100}
+          height={200}
+          />
+        </div>
+          <div className={styles.rightForm}>
+            <div className={styles.form}>
+              <div className={styles.img}></div>
+              <div className={styles.login}>
+                <h1>See What's Happening</h1>
+                <h3>Join Hackatweet today.</h3>
+                <button
+                  className={styles.signupBtn}
+                  onClick={showSignUpModal}
+                  >
+                  Sign up
+                </button>
+                {isSignUpModalOpen &&  <Modal  
+                  className={styles.modal}
+                  open={isSignUpModalOpen} 
+                  onCancel={handleSignUpCancel}
+                  footer={null}
+                  >
+                {signUpForm}
+                </Modal>}
+                <h4>Already have an account ?</h4>
+                <button
+                  className={styles.signInBtn}
+                  onClick={showSignInModal}
+                  >
+                  Sign In
+                </button>
+                {isSignInModalOpen &&  <Modal  
+                  className={styles.modal}
+                  open={isSignInModalOpen} 
+                  onCancel={handleSignInCancel}
+                  footer={null}
+                  >
+                {signInForm}
+                </Modal>}
+              </div>
+          </div>
         </div>
       </div>
     </>
