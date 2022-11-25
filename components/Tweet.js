@@ -92,7 +92,11 @@ const Tweet = (props) => {
           }}
         />
         <span style={{ marginRight: "10px" }}>({props.nbLikes})</span>
-        <FontAwesomeIcon icon={faTrash} style={displayStyle} />
+        <FontAwesomeIcon
+          icon={faTrash}
+          style={displayStyle}
+          onClick={() => handleDelete()}
+        />
       </div>
     </div>
   );

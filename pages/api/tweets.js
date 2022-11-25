@@ -7,7 +7,13 @@ export default async (req, res) => {
     const date = new Date();
     const findUser = await User.findOne({ token });
     const user = findUser._id;
-    const newTweet = await new Tweet({ user, message, nbLikes, date });
+    const newTweet = await new Tweet({
+      user,
+      message,
+      nbLikes,
+      date,
+      userLikes: "",
+    });
     newTweet.save();
     res.json({ result: true });
   }
