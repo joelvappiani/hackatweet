@@ -10,7 +10,7 @@ import { deleteTweet } from "../reducers/tweets";
 const Tweet = (props) => {
   const dispatch = useDispatch();
 
-  const [like, setLike] = useState(props.isLiked);
+  // const [like, setLike] = useState(props.isLiked);
 
   let tweetDate = new Date(props.date);
   let hour = tweetDate.getHours();
@@ -44,9 +44,8 @@ const Tweet = (props) => {
   };
 
   const handleLike = () => {
-    setLike(!like);
     const id = props.tweetId;
-    const counter = like ? "decrement" : "increment";
+    const counter = props.isLiked ? "decrement" : "increment";
     const userId = props.userId;
 
     fetch("http://localhost:3000/api/tweets", {
@@ -68,7 +67,7 @@ const Tweet = (props) => {
 
   let likeStyle;
 
-  if (like) {
+  if (props.isLiked) {
     likeStyle = { color: "red" };
   }
 
