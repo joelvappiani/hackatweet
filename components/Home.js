@@ -76,7 +76,7 @@ const Home = () => {
 
   const trendsList = [...new Set(hashtagList)].map((data, i) => {
     const hashtagCount = hashtagList.filter((e) => e === data).length;
-    return <Trends hashtagName={data} key={i} count={hashtagCount} />;
+    return <Trends hashtagName={data.slice(1)} key={i} count={hashtagCount} />;
   });
 
   const handleLogout = () => {
