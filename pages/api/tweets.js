@@ -23,15 +23,48 @@ export default async (req, res) => {
     });
   }
   if (req.method === "DELETE") {
-    const {id} = req.body
-    await Tweet.findByIdAndDelete(id)
-    const found = await Tweet.findById(id)
-    if(found) {
-      res.json({ result: false})
+    const { id } = req.body;
+    await Tweet.findByIdAndDelete(id);
+    const found = await Tweet.findById(id);
+    if (found) {
+      res.json({ result: false });
     }
-    if(!found) {
-      res.json({ result: true})
+    if (!found) {
+      res.json({ result: true });
+    }
+  }
+
+  if (req.method === "PUT") {
+    const id = req.body.id;
+    const userId = req.body.userId;
+    const counter = req.body.counter;
+
+    const tweetId = await Tweet.findById(id);
+    const likes = tweetId.nbLikes;
+    const usersLikes = tweetId.userLikes;
+
+    if (counter === "increment") {
+      await Tweet.findByIdAndUpdate(id, {
+        nbLikes: likes + 1,
+        userLikes: [...usersLikes, userId],
+      });
+      const found = await Tweet.findById(id);
+      if (found) {
+        res.json({ result: true, data: found });
+      } else res.json({ result: false });
+    }
+
+    if (counter === "decrement") {
+      if (likes > 0) {
+        await Tweet.findByIdAndUpdate(id, {
+          nbLikes: likes - 1,
+          userLikes: usersLikes.filter((e) => e !== userId),
+        });
+        const found = await Tweet.findById(id);
+        if (found) {
+          res.json({ result: true, data: found });
+        }
+      } else res.json({ result: false });
     }
   }
 };
-

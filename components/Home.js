@@ -14,8 +14,6 @@ const Home = () => {
 
   const users = useSelector((state) => state.users.value);
 
-  console.log(users);
-
   useEffect(() => {
     fetch("http://localhost:3000/api/tweets")
       .then((response) => response.json())
@@ -29,9 +27,10 @@ const Home = () => {
   }, [tweets]);
 
   const tweetLists = tweetsList.map((data, i) => {
-    console.log(data.user);
+    const userId = data.user._id;
     const user = data.user;
     const tweetId = data._id;
+
     return (
       <Tweet
         key={i}
@@ -39,6 +38,7 @@ const Home = () => {
         {...user}
         tweetId={tweetId}
         isUserTweet={user.token === users}
+        //isLiked={data.userLikes.find((e) => e === userId)}
       />
     );
   });
