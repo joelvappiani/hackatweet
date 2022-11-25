@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTweet } from "../reducers/tweets";
 
-
 const Input = () => {
   const [message, setMessage] = useState("");
 
@@ -12,6 +11,9 @@ const Input = () => {
   const token = useSelector((state) => state.users.value);
 
   const handleAdd = () => {
+    
+    let hashtag = message.match(/#[a-z]+/gi);
+
     fetch("http://localhost:3000/api/tweets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,9 +21,6 @@ const Input = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        let hashtag = message.match(/#[a-z]+/gi);
-       
         setMessage("");
         dispatch(addTweet());
         console.log(added);

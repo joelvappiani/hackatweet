@@ -54,7 +54,6 @@
 .leftMenuFooter {
   display: flex;
   flex-direction: column;
-
 }
 
 .firstName {
@@ -81,26 +80,30 @@
 }
 
 .inputContainer {
- width: 50vw;
- border: 1px solid gray;
- border-left: none;
- border-top: none;
+  width: 50vw;
+  border: 1px solid gray;
+  border-left: none;
+  border-top: none;
 }
 .trends {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   padding-top: 0;
   padding: 1.5rem;
   width: 25%;
 }
 .trends h1 {
   margin-top: 0;
-
 }
 .tweetContainer {
   height: calc(100vh - 15rem);
   overflow-y: scroll;
   width: 100%;
+}
+
+.trendsList {
+  background: #1b222d;
+  width: 60%;
+  border-radius: 15px;
 }

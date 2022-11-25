@@ -7,7 +7,6 @@ export default async (req, res) => {
     const date = new Date();
     const findUser = await User.findOne({ token });
     const user = findUser._id;
-<<<<<<< HEAD
     const newTweet = await new Tweet({
       user,
       message,
@@ -15,9 +14,6 @@ export default async (req, res) => {
       date,
       userLikes: "",
     });
-=======
-    const newTweet = await new Tweet({ user, message, nbLikes, date, userLikes: null });
->>>>>>> jojo
     newTweet.save();
     res.json({ result: true });
   }
